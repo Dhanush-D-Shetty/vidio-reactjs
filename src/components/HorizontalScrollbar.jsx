@@ -16,7 +16,7 @@ const HorizontalScrollbar = ({ data = [], istrending, heading, media_Type}) => {
 
 
     return (
-        <div className={`container relative z-20 mx-auto px-3 my-3 py-3 border-t-[1px]  pb-8 ${istrending ? "border-t-0":"border-t-neutral-800"}`}>
+        <div className={`container relative z-20 mx-auto px-3 my-3 py-3 border-t-[1px]  pb-8 border-t-neutral-800`}>
             <h1 className='text-2xl lg:text-3xl font-bold my-4 capitalize'>{heading }</h1>
             <div className='relative overflow-hidden  min-h-[280px]'>
 
