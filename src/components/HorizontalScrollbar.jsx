@@ -4,6 +4,7 @@ import { GrFormNext, GrFormPrevious } from 'react-icons/gr'
 
 const HorizontalScrollbar = ({ data = [], istrending, heading, media_Type}) => {
 
+    
     const containerRef = useRef();
 
     const handlePrev = () => {
@@ -11,19 +12,15 @@ const HorizontalScrollbar = ({ data = [], istrending, heading, media_Type}) => {
     }
     const handleNext = () => {
         containerRef.current.scrollLeft += 50
-
-
     }
 
 
-
-
     return (
-        <div className='container mx-auto px-3 my-10'>
-            <h1 className='text-xl lg:text-3xl font-bold mb-2'>{heading}</h1>
-            <div className='relative overflow-hidden py-2'>
+        <div className={`container relative z-20 mx-auto px-3 my-3 py-3 border-t-[1px]  pb-8 ${istrending ? "border-t-0":"border-t-neutral-800"}`}>
+            <h1 className='text-2xl lg:text-3xl font-bold my-4 capitalize'>{heading }</h1>
+            <div className='relative overflow-hidden  min-h-[280px]'>
 
-                <div ref={containerRef} className='flex gap-1 overflow-x-auto scroll-smooth transition-all scrollbar-none'>
+                <div ref={containerRef} className='flex gap-1 overflow-x-auto scroll-smooth transition-all  scrollbar-none'>
                     {data.map((singledata, index) => {
                         return (
                             <Card key={singledata.id + heading + index} singledata={singledata} istrending={istrending} index={index + 1}  media_Type={media_Type} />

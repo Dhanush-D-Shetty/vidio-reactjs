@@ -9,7 +9,7 @@ const ExplorePage = () => {
   const [pageNo, setPageNo] = useState(1);
   const [totalPageNo, setTotalPageNo] = useState(0);
 
-  // console.log("params =  ", param.explore);
+// console.log("params =  ", param.explore);
 
   const fetchData = async () => {
     try {
@@ -27,12 +27,15 @@ const ExplorePage = () => {
     }
   };
 
-
   const handleScroll = () => {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       setPageNo((prev) => prev + 1);
     }
   }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, [])
 
   useEffect(() => {
     fetchData();
@@ -44,23 +47,13 @@ const ExplorePage = () => {
     fetchData();
   }, [param.explore]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, [])
-
-
-
-
-
-
   return (
-
-    <div className="pt-20">
+    <div className=" relative pt-20 z-20">
       <div className="">
-        <h1 className="text-3xl text-center my-5 md:text-4xl">Popular { param.explore==="tv" ?"TV Show":"Movies"}</h1>
+        <h1 className="text-3xl text-center my-5 md:text-4xl">Popular {param.explore === "tv" ? "TV Show" : "Movies"}</h1>
         <div className="flex gap-4 flex-wrap items-center justify-center">
           {data.map((singleData, index) => {
-            return <Card singledata={singleData}  key={singleData.id} media_Type={param.explore}/>;
+            return <Card singledata={singleData} key={singleData.id} media_Type={param.explore} />;
           })}
         </div>
       </div>

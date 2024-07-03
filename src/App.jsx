@@ -44,7 +44,7 @@ const App = () => {
       <div>
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <MobileNavigation />
     </main>
   )
